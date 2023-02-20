@@ -1,44 +1,59 @@
+async function fun1 (){
+    try{
 console.log("person1 : shows ticket");
 console.log("person2 : shows ticket");
 
-const promiseWifeBringingTicks = new Promise((resolve,rejct)=>{
+const promiseWifeBringingTicks = await new Promise((resolve,rejct)=>{
     setTimeout(()=>{
         resolve('ticket');
     },3000)
 }); 
+console.log(promiseWifeBringingTicks);
 
-const getpopcorn = promiseWifeBringingTicks.then((t)=>{
+const getpopcorn = await new Promise((resolve,reject)=>{
     console.log('wife : I have a ticket');
     console.log('husband : we should go in');
     console.log('wife : no i am hungry');
-    return new Promise((resolve,reject)=>resolve(`${t} popcorn`))
+    resolve('popcorn')
+})
+console.log(getpopcorn);
 
-});
-
-const getbutter = getpopcorn.then((t)=>{
+    
+const getbutter = await new Promise((resolve,reject)=>{
     console.log('husband : I have some popcorn');
     console.log('husband : we should go in');
     console.log('wife : I need butter on popcorn');
-     return new Promise((resolve,reject)=>resolve(`${t} butter`))
-});
+    resolve('butter')
+    });
+    console.log(getbutter);
+    
 
-const getcoldDringks = getbutter.then((t)=>{
+
+const getcoldDringks =  await new Promise((resolve,reject )=>{
     console.log("husband : darling take this coldrink")
-   return new Promise((resolve,reject )=>resolve(`${t} coldDrink `))
+    resolve('coldDrink')
+});
+console.log(getcoldDringks);
+  
  
-})
+
 console.log('person4 : shows tiket');
 console.log('person5 : shows tiket');
-getcoldDringks.then((data)=>{
-    console.log(data); 
- })
+    }
+    catch (err){
+        console.log(err)}
+}
+
+fun1()
+
 
 //-------------------------------------------------------
-// async function dadmakespromise (){
+// async function dadmakespromise(){
+//     try{
 // const dadpromise = await new Promise((resolve,reject)=>{
     
 //     setTimeout(()=>{
-//         var salaryCreadited = true;
+//          var salaryCreadited = true;
 //     var salary = 100000
 //     var costofPs5 = 400000
 //     var costofPs4 = 30000
@@ -55,6 +70,49 @@ getcoldDringks.then((data)=>{
 
 //     },1000)
 // })
-// console.log(dadpromise)
+
+//     }catch((err)=>{console.log(err)})
 // }
-// dadmakespromise().catch((msg)=>console.log(msg))
+// console.log(dadpromise)
+
+//  dadmakespromise().catch((msg)=>console.log(msg))
+//------------------------------------------------------------
+
+
+// console.log("person1 : shows ticket");
+// console.log("person2 : shows ticket");
+
+// const promiseWifeBringingTicks = new Promise((resolve,rejct)=>{
+//     setTimeout(()=>{
+//         resolve('ticket');
+//     },3000)
+// }); 
+
+// const getpopcorn = promiseWifeBringingTicks.then((t)=>{
+//     console.log('wife : I have a ticket');
+//     console.log('husband : we should go in');
+//     console.log('wife : no i am hungry');
+//     return new Promise((resolve,reject)=>resolve(`${t} popcorn`))
+
+// });
+
+// const getbutter = getpopcorn.then((t)=>{
+//     console.log('husband : I have some popcorn');
+//     console.log('husband : we should go in');
+//     console.log('wife : I need butter on popcorn');
+//      return new Promise((resolve,reject)=>resolve(`${t} butter`))
+// });
+
+// const getcoldDringks = getbutter.then((t)=>{
+//     console.log("husband : darling take this coldrink")
+//    return new Promise((resolve,reject )=>resolve(`${t} coldDrink `))
+ 
+// })
+// console.log('person4 : shows tiket');
+// console.log('person5 : shows tiket');
+
+// getcoldDringks.then((data)=>{
+//     console.log(data); 
+//  })
+
+//=======================================================
